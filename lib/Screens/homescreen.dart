@@ -18,11 +18,11 @@ class HomeScreen extends StatelessWidget {
         ),
         automaticallyImplyLeading: false,
         title: const Text('AKART'),
-        backgroundColor: Color.fromARGB(255, 0, 255, 173),
+        backgroundColor: const Color.fromARGB(255, 0, 255, 173),
         actions: [
     Theme(
       data: Theme.of(context).copyWith(
-        iconTheme: IconThemeData(color: Color.fromARGB(255, 25, 147, 102)), // Change the color to red
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 25, 147, 102)), // Change the color to red
       ),
       child: IconButton(
         icon: Icon(Icons.shopping_cart),
