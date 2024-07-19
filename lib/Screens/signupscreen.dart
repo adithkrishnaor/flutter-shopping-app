@@ -150,7 +150,6 @@ class SignUpScreen extends StatelessWidget {
       );
     } else {
       if (_pswd.text == _cpswd.text) {
-        Text('Success');
         Navigator.push(
           context,
           MaterialPageRoute(
