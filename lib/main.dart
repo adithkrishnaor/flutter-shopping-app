@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Color.fromARGB(255, 0, 255, 173)
       ),
+      debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
   }

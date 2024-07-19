@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Screens/homescreen.dart';
 import 'package:shopping_app/Screens/loginscreen.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -153,7 +154,7 @@ class SignUpScreen extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => LoginScreen(),
+            builder: (context) => HomeScreen(),
           ),
         );
       } else {

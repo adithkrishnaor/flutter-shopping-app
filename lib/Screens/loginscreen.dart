@@ -1,6 +1,7 @@
 //import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Screens/homescreen.dart';
 import 'package:shopping_app/Screens/signupscreen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -19,9 +20,9 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/Screenshot from 2024-07-19 14-08-44.png',
+              Image.asset(
+                  'assets/images/Screenshot from 2024-07-19 14-08-44.png',
                   height: 120),
-
               const SizedBox(
                 height: 50,
               ),
@@ -76,9 +77,9 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
-             const SizedBox(
+              const SizedBox(
                 height: 20,
-              ), 
+              ),
               ElevatedButton.icon(
                   onPressed: () {
                     checkLogin(context);
@@ -96,16 +97,14 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              
-             
               GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => SignUpScreen(),
-                      ),
-                      );
+                    ),
+                  );
                 },
                 child: const Text(
                   'New User ? Sign Up',
@@ -128,6 +127,12 @@ class LoginScreen extends StatelessWidget {
     if (_username.text.isNotEmpty && _password.text.isNotEmpty) {
       if (_username.text == 'admin' && _password.text == 'admin') {
         //goto home
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ),
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             behavior: SnackBarBehavior.floating,
