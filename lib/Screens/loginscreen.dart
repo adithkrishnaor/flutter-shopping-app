@@ -1,12 +1,13 @@
 //import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Screens/signupscreen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
   final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _pswdController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w500,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(
@@ -47,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
-                controller: _passwordController,
+                controller: _pswdController,
                 obscureText: true,
                 decoration: InputDecoration(
                     hintText: 'Enter your Password',
@@ -88,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   style: ElevatedButton.styleFrom(
                       foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                      backgroundColor: Color.fromARGB(255, 0, 128, 255),
+                      backgroundColor: Color.fromARGB(255, 54, 196, 7),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
                       ))),
@@ -99,7 +100,12 @@ class LoginScreen extends StatelessWidget {
              
               GestureDetector(
                 onTap: () {
-                  //code to signup page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SignUpScreen(),
+                      ),
+                      );
                 },
                 child: const Text(
                   'New User ? Sign Up',
@@ -118,7 +124,7 @@ class LoginScreen extends StatelessWidget {
 
   void checkLogin(BuildContext context) {
     final _username = _usernameController;
-    final _password = _passwordController;
+    final _password = _pswdController;
     if (_username.text.isNotEmpty && _password.text.isNotEmpty) {
       if (_username.text == 'admin' && _password.text == 'admin') {
         //goto home
