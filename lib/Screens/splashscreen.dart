@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Screens/loginscreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,6 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState(){
+    gotoLogin();
     super.initState();
   }
 
@@ -36,6 +38,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> gotoLogin() async{
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed( const Duration(seconds: 2));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => LoginScreen(),
+      )
+    );
   }
 }
