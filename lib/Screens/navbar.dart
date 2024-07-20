@@ -40,7 +40,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'My Profile',
+          label: 'Profile',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.shopping_cart),

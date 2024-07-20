@@ -4,8 +4,11 @@ import 'package:shopping_app/Screens/homescreen.dart';
 import 'package:shopping_app/Screens/profilescreen.dart';
 import 'package:shopping_app/Screens/splashscreen.dart';
 import 'package:shopping_app/Screens/wishlistscreen.dart';
+import 'package:shopping_app/db/functions/db_functions.dart';
 
-void main (){
+Future<void>main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  initDatabase();
   runApp(MyApp());
 }
 

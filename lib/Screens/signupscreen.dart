@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Screens/homescreen.dart';
 import 'package:shopping_app/Screens/loginscreen.dart';
+import 'package:shopping_app/db/functions/db_functions.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   SignUpScreen({super.key});
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   final _nameController = TextEditingController();
+
   final _emailController = TextEditingController();
+
   final _passwordController = TextEditingController();
+
   final _confirmPasswordController = TextEditingController();
+
+final _dobController = TextEditingController();
+
+ DateTime _selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +33,7 @@ class SignUpScreen extends StatelessWidget {
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               const Text(
                 'Sign Up',
@@ -65,6 +78,35 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
+              
+TextField(
+  controller: _dobController,
+  decoration: InputDecoration(
+    hintText: 'Enter your date of birth',
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+    ),
+  ),
+  onTap: () async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2025),
+    );
+    if (picked != null) {
+      setState(() {
+        _selectedDate = picked;
+        _dobController.text = '${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}';
+      });
+    }
+  },
+),
+
+const SizedBox(
+                height: 20,
+              ),
+
               TextField(
                 controller: _passwordController,
                 obscureText: true,
@@ -136,10 +178,13 @@ class SignUpScreen extends StatelessWidget {
   void checkSignUp(BuildContext context) {
     final _name = _nameController;
     final _email = _emailController;
+        final _dob = _dobController;
+
     final _pswd = _passwordController;
     final _cpswd = _confirmPasswordController;
     if (_name.text.isEmpty ||
         _email.text.isEmpty ||
+        _dob.text.isEmpty ||
         _pswd.text.isEmpty ||
         _cpswd.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -151,6 +196,7 @@ class SignUpScreen extends StatelessWidget {
       );
     } else {
       if (_pswd.text == _cpswd.text) {
+        addUser(_nameController.text,_emailController.text,_dobController.text,_passwordController.text,_confirmPasswordController.text);
         Navigator.push(
           context,
           MaterialPageRoute(
