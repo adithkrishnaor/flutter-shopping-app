@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Screens/cartscreen.dart';
+import 'package:shopping_app/Screens/homescreen.dart';
+import 'package:shopping_app/Screens/profilescreen.dart';
 import 'package:shopping_app/Screens/splashscreen.dart';
+import 'package:shopping_app/Screens/wishlistscreen.dart';
 
 void main (){
   runApp(MyApp());
@@ -16,6 +20,12 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
+      routes: {
+    '/home': (context) => HomeScreen(),
+    '/wishlist': (context) => WishlistScreen(),
+    '/my_profile': (context) => ProfileScreen(),
+    '/cart': (context) => CartScreen(),
+  },
     );
   }
 }
