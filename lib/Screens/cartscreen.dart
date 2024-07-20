@@ -7,8 +7,7 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-
-  int _currentIndex = 3; 
+  int _currentIndex = 3;
 
   void _onTap(int index) {
     setState(() {
@@ -16,14 +15,29 @@ class _CartScreenState extends State<CartScreen> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Cart Screen'),
-      ),
+      body: const SafeArea(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: Text(
+                'My Cart',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
 
+            
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBarWidget(
         currentIndex: _currentIndex,
         onTap: _onTap,
