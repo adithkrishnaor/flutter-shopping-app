@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Screens/navbar.dart';
+import 'package:shopping_app/db/functions/db_functions.dart';
 
 class ProfileScreen extends StatefulWidget {
+    const ProfileScreen({super.key});
+  
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
+List userdata = [];
+  @override
+  void initState() {
+    userDetails();
+    super.initState();
+  }
+
+  void userDetails() async {
+    userdata = await getUser();
+    setState(() {});
+  }
+
   int _currentIndex = 2; // Initialize with the correct index
 
   void _onTap(int index) {
@@ -18,6 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(userdata);
     return Scaffold(
       body: const SafeArea(
         child: Column(
@@ -54,14 +71,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Full Name',
+                      'name',
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     Text(
-                      'email@gmail.com', // Replace with the user's email
+                      'email',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.grey,

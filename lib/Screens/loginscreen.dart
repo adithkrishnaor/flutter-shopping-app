@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Screens/homescreen.dart';
 import 'package:shopping_app/Screens/signupscreen.dart';
+import 'package:shopping_app/db/functions/db_functions.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -121,11 +122,13 @@ class LoginScreen extends StatelessWidget {
     ));
   }
 
-  void checkLogin(BuildContext context) {
-    final _username = _usernameController;
-    final _password = _pswdController;
-    if (_username.text.isNotEmpty && _password.text.isNotEmpty) {
-      if (_username.text == 'admin' && _password.text == 'admin') {
+  void checkLogin(BuildContext context) async {
+    final _username = _usernameController.text;
+    final _password = _pswdController.text;
+    if (_username.isNotEmpty && _password.isNotEmpty) {
+          bool userExists = await checkUser(_username, _password);
+
+      if (userExists) {
         //goto home
         Navigator.push(
           context,
