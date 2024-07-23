@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Screens/navbar.dart';
+import 'package:shopping_app/categories/electronics_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   //const HomeScreen({super.key});
@@ -82,7 +83,17 @@ int _currentIndex = 0;
               shrinkWrap: true,
               childAspectRatio: 3 / 2,
               children: [
-                CategoryCard('Electronics', Icons.phone_android),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Electronics_Screen(),
+                        ),
+                        );
+                  },
+                  child: CategoryCard('Electronics', Icons.phone_android)
+                ),
                 CategoryCard('Fashion', Icons.shopping_bag_outlined),
                 CategoryCard('Personal Care', Icons.face),
                 CategoryCard('Appliances', Icons.kitchen_outlined),
@@ -123,3 +134,4 @@ class CategoryCard extends StatelessWidget {
     );
   }
 }
+
