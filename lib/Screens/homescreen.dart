@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Screens/navbar.dart';
+import 'package:shopping_app/categories/appliances_screen.dart';
 import 'package:shopping_app/categories/electronics_screen.dart';
 import 'package:shopping_app/categories/fashion_screen.dart';
 import 'package:shopping_app/categories/personal_care_screen.dart';
@@ -122,7 +123,19 @@ int _currentIndex = 0;
                     'Personal Care', Icons.face
                   )
                 ),
-                CategoryCard('Appliances', Icons.kitchen_outlined),
+                InkWell(
+                   onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Appliances_Screen(),
+                        ),
+                        );
+                  },
+                  child: CategoryCard(
+                    'Appliances', Icons.kitchen_outlined
+                  )
+                ),
                 CategoryCard('Grocery', Icons.local_grocery_store_outlined),
                 CategoryCard('Toys', Icons.toys_outlined),
               ],
