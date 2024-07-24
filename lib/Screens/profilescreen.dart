@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Screens/navbar.dart';
+import 'package:shopping_app/Screens/settings_screen.dart';
 import 'package:shopping_app/db/functions/db_functions.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -36,7 +37,7 @@ List userdata = [];
   Widget build(BuildContext context) {
     print(userdata);
     return Scaffold(
-      body: const SafeArea(
+      body: SafeArea(
         child: Column(
           children: [
             SizedBox(
@@ -134,12 +135,19 @@ List userdata = [];
                   height: 20,
                 ),
                 ListTile(
-                  leading: Icon(
-                    Icons.settings,
-                    size: 40,
-                  ),
-                  title: Text('Settings'),
-                ),
+  leading: Icon(
+    Icons.settings,
+    size: 40,
+  ),
+  title: Text('Settings'),
+  onTap: () {
+    // Navigate to settings screen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Settings_Screen()),
+    );
+  },
+)
               ],
             ),
           ],
@@ -151,4 +159,10 @@ List userdata = [];
       ),
     );
   }
+  void navigateToSettings() {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Settings_Screen()),
+  );
+}
 }
