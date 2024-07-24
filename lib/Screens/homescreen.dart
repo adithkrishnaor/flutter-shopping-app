@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/Screens/navbar.dart';
 import 'package:shopping_app/categories/electronics_screen.dart';
 import 'package:shopping_app/categories/fashion_screen.dart';
+import 'package:shopping_app/categories/personal_care_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   //const HomeScreen({super.key});
@@ -108,7 +109,19 @@ int _currentIndex = 0;
                   'Fashion', Icons.shopping_bag_outlined
                   )
                 ),
-                CategoryCard('Personal Care', Icons.face),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Personal_Care_Screen(),
+                        ),
+                        );
+                  },
+                  child: CategoryCard(
+                    'Personal Care', Icons.face
+                  )
+                ),
                 CategoryCard('Appliances', Icons.kitchen_outlined),
                 CategoryCard('Grocery', Icons.local_grocery_store_outlined),
                 CategoryCard('Toys', Icons.toys_outlined),
