@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Screens/checkout_screen.dart';
 import 'package:shopping_app/Screens/navbar.dart';
 
 class CartScreen extends StatefulWidget {
@@ -40,6 +41,10 @@ class _CartScreenState extends State<CartScreen> {
             ElevatedButton(
               onPressed: () {
                 // Add payment logic here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CheckoutScreen()),
+                  );
               },
               child: Text('Checkout'),
             ),
