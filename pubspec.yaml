@@ -68,7 +68,10 @@ flutter:
   assets:
      - assets/images/Screenshot from 2024-07-19 14-08-44.png
       
-     - assets/images/carouseltemp.png
+
+     - assets/images/carousel1.png
+     - assets/images/carousel2.png
+     - assets/images/carousel3.png
      - assets/images/carouseltemp2.png
      - assets/images/flutter_banner_onlyflutter.png
      - assets/images/personprofileicon.png

@@ -15,8 +15,8 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      backgroundColor: Color.fromARGB(255, 0, 255, 173),
-      selectedItemColor: Colors.blue,
+      backgroundColor: Color.fromARGB(121, 238, 229, 233),
+      selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
       currentIndex: widget.currentIndex,
       onTap: (index) {
         if (index == 0) {
