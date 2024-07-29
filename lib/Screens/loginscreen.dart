@@ -1,15 +1,19 @@
-//import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Screens/homescreen.dart';
 import 'package:shopping_app/Screens/signupscreen.dart';
 import 'package:shopping_app/db/functions/db_functions.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final _usernameController = TextEditingController();
   final _pswdController = TextEditingController();
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -44,18 +48,32 @@ class LoginScreen extends StatelessWidget {
                     hintText: 'Enter your Username',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                    )),
+                    ),
+                    prefixIcon: const Icon(Icons.person)),
               ),
               const SizedBox(
                 height: 20,
               ),
               TextFormField(
                 controller: _pswdController,
-                obscureText: true,
+                obscureText: !_isPasswordVisible,
                 decoration: InputDecoration(
                     hintText: 'Enter your Password',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
+                    ),
+                    prefixIcon: const Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _isPasswordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isPasswordVisible = !_isPasswordVisible;
+                        });
+                      },
                     )),
               ),
               const SizedBox(
@@ -126,7 +144,7 @@ class LoginScreen extends StatelessWidget {
     final _username = _usernameController.text;
     final _password = _pswdController.text;
     if (_username.isNotEmpty && _password.isNotEmpty) {
-          bool userExists = await checkUser(_username, _password);
+      bool userExists = await checkUser(_username, _password);
 
       if (userExists) {
         //goto home
